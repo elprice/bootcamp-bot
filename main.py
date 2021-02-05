@@ -13,4 +13,8 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send('pong')
 
+@bot.command(pass_context=True)
+async def memberCount(ctx):
+    await ctx.send(str(ctx.guild.member_count))
+
 bot.run(config.bot['token'])
