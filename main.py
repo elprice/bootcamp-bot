@@ -11,10 +11,17 @@ async def on_ready():
     
 @bot.command(pass_context=True)
 async def ping(ctx):
-    await ctx.send('pong')
+    await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 
 @bot.command(pass_context=True)
 async def memberCount(ctx):
     await ctx.send(str(ctx.guild.member_count))
+
+@bot.command(pass_content=True)
+async def teams(ctx, *names):
+    teamz = []
+    for name in names:
+        teamz.append(name)
+    await ctx.send(f'team 1 {teamz[::2]} \nteam 2 {teamz[1::2]}')
 
 bot.run(config.bot['token'])
